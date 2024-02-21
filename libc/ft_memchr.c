@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:00:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 18:06:10 by hramaros              #+#    #+#             */
+/*   Updated: 2024/02/21 08:55:21 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+void	*ft_memchr(const void *str, int c, int b_size)
 {
-	int	count;
+	char	*ret;
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
+	ret = 0;
+	while (b_size--)
+	{
+		if (*(unsigned char *)str == c)
+		{
+			ret = (char *)str++;
+			break ;
+		}
+		else
+			str++;
+	}
+	return (ret);
 }
 
 /*
 #include <stdio.h>
+#include <string.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int res;
+	char *s = "bonjour je fais parti de l'elite";
+	char *ret;
+	char c = 'e';
+	int n = 9;
 
-	if (argc != 2)
-	{
-		printf("Veuiller ajouter un argument\n");
-		return (1);
-	}
-	res = ft_strlen(argv[1]);
-	if (res)
-		printf("%s est de taille : %d\n", argv[1], res);
+	ret = memchr(s, c, n);
+	printf("%s\n", ret);
 	return (0);
 }*/

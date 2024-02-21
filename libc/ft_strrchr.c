@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:00:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 15:11:16 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 09:43:43 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+char	*ft_strrchr(char *str, char c)
 {
-	int	count;
+	char	*res;
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
+	res = 0;
+	while (*str)
+		if (*str++ == c)
+		{
+			res = --str;
+			str++;
+		}
+	return (res);
 }
 
 /*
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int res;
+	char *ret;
+	char *str;
 
-	if (argc != 2)
-	{
-		printf("Veuiller ajouter un argument\n");
-		return (1);
-	}
-	res = ft_strlen(argv[1]);
-	if (res)
-		printf("%s est de taille : %d\n", argv[1], res);
+	str = "Bonjour j2 suis a 42\n";
+	ret = ft_strrchr(str, '2');
+	printf("%s", ret);
 	return (0);
 }*/

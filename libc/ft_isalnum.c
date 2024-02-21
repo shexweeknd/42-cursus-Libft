@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:10:00 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/19 14:55:47 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 09:44:24 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_isalnum(int c)
 		return (8);
 	return (0);
 }
+
 /*
 #include <stdio.h>
 

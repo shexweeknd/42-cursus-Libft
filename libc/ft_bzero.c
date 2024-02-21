@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:46:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/19 16:00:49 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 09:44:27 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ void	ft_bzero(void *s, int n)
 	while (n--)
 		*(unsigned int *)s++ = 0;
 }
+
 /*
 #include <stdio.h>
 #include <strings.h>

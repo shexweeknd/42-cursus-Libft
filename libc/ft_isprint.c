@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:54:29 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/19 15:00:13 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 09:44:13 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_isprint(int c)
 		return (16384);
 	return (0);
 }
+
 /*
 #include <ctype.h>
 #include <stdio.h>

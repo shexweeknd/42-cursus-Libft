@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:00:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 15:19:12 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 09:43:34 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
-{
-	int	count;
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	unsigned int	i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] && i < n - 1)
+		i++;
+	if (s1[i] == s2[i])
+		return (0);
+	else
+		return (s1[i] - s2[i]);
 }
 
 /*
 #include <stdio.h>
-
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int res;
+	char	s1[] = "aze";
+	char	s2[] = "az";
+	unsigned int n;
 
-	if (argc != 2)
-	{
-		printf("Veuiller ajouter un argument\n");
-		return (1);
-	}
-	res = ft_strlen(argv[1]);
-	if (res)
-		printf("%s est de taille : %d\n", argv[1], res);
+	n = 6;
+	printf("%d\n", ft_strncmp(s1, s2, n));
 	return (0);
 }*/

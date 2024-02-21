@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:00:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 13:13:23 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 09:43:58 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
-{
-	int	count;
+#include <stdlib.h>
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
+char	*ft_strdup(const char *s)
+{
+	char	*ret;
+	int		size;
+
+	size = 0;
+	while (s[size])
+		size++;
+	ret = (char *)malloc(sizeof(char) * size);
+	if (!ret)
+		exit(EXIT_FAILURE);
+	size = 0;
+	while (s[size])
+	{
+		*(ret + size) = s[size];
+		size++;
+	}
+	ret[size] = '\0';
+	return (ret);
 }
 
 /*
@@ -25,15 +38,16 @@ int	ft_strlen(const char *s)
 
 int	main(int argc, char **argv)
 {
-	int res;
+	char *ret;
 
 	if (argc != 2)
 	{
-		printf("Veuiller ajouter un argument\n");
+		printf("Ajoutez un argument\n");
 		return (1);
 	}
-	res = ft_strlen(argv[1]);
-	if (res)
-		printf("%s est de taille : %d\n", argv[1], res);
+	printf("L'argument : %s\n", argv[1]);
+	ret = ft_strdup(argv[1]);
+	printf("Le resultat : %s\n", ret);
+	free(ret);
 	return (0);
 }*/

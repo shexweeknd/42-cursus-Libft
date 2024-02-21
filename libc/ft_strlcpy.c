@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:00:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 14:11:26 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 09:43:54 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	count;
+	unsigned int	i;
+	unsigned int	count;
 
+	i = 0;
 	count = 0;
-	while (s[count])
+	while (src[count])
 		count++;
+	if (size < 1)
+		return (count);
+	while (src[i] && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 	return (count);
 }
 
 /*
 #include <stdio.h>
+#include <strings.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int res;
+	char src[] = "Nuts Channel Is Back";
+	char dst[] = "I am the only one";
 
-	if (argc != 2)
-	{
-		printf("Veuiller ajouter un argument\n");
-		return (1);
-	}
-	res = ft_strlen(argv[1]);
-	if (res)
-		printf("%s est de taille : %d\n", argv[1], res);
+	printf("%s\n", dst);
+	ft_strlcpy(dst, src, 5);
+	printf("%s\n", dst);
 	return (0);
 }*/

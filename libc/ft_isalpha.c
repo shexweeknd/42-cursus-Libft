@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:57:26 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/19 14:55:29 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 09:44:22 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_isalpha(int c)
 		return (1024);
 	return (0);
 }
+
 /*
 #include <stdio.h>
 
