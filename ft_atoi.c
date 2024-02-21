@@ -6,9 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:27:31 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:44:29 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:20:20 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	is_number(char c)
 {
@@ -26,9 +28,9 @@ int	is_space(char c)
 
 int	ft_atoi(char *str)
 {
-	int i;
-	int sign;
-	int ret;
+	int		i;
+	int		sign;
+	int		ret;
 
 	i = 0;
 	while (is_space(str[i]))

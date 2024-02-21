@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 18:06:10 by hramaros              #+#    #+#             */
-/*   Updated: 2024/02/21 08:55:21 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 18:06:10 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 13:21:51 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *str, int c, int b_size)
 {

@@ -6,9 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:58:35 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/20 15:01:46 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:26:47 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

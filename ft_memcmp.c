@@ -5,11 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 19:14:09 by hramaros              #+#    #+#             */
-/*   Updated: 2024/02/21 08:56:19 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/20 19:14:09 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/21 13:22:04 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 int	ft_memcmp(void *s1, void *s2, int n)

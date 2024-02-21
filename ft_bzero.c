@@ -6,9 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:46:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:44:27 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:04:54 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *s, int n)
 {

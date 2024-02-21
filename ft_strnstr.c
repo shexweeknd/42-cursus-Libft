@@ -6,13 +6,14 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:58:20 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 09:43:41 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:30:57 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strnstr(const char *str, const char *to_find, int n)
 {
-	char	*occ;
 	int		i;
 	int		j;
 
@@ -27,10 +28,7 @@ char	*ft_strnstr(const char *str, const char *to_find, int n)
 			while (*(str + j) == *(to_find + i))
 			{
 				if (!*(to_find + i + 1))
-				{
-					occ = (char *)(str + j - i);
-					return (occ);
-				}
+					return ((char *)(str + j - i));
 				i++;
 				j++;
 			}
