@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:12:17 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:01:38 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:14:32 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		while (n--)
 			*(unsigned char *)dest++ = *(unsigned char *)src++;
 	else if (src < dest)
-		while (n == 0 || --n)
+		while ((long)(--n) >= 0)
 			*(unsigned char *)(dest + n) = *(unsigned char *)(src + n);
 	return ((void *)dest_copy);
 }
@@ -39,10 +39,10 @@ int	main(void)
 {
 	char *ret;
 
-	char src[] = "consectetur";
+	char src[] = "Nuts Channel is back";
 
 	printf("%s\n", src);
-	ret = ft_memmove(src, src, 0);
+	ret = ft_memmove(src + 2, src, 5);
 	printf("%s\n", ret);
 	return (0);
 }*/
