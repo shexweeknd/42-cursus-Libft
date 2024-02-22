@@ -6,10 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:59:21 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 16:17:53 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:08:18 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

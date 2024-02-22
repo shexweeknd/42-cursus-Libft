@@ -6,10 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:18:07 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 17:05:31 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:08:13 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 /*
