@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:03:18 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:03:09 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:40:35 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	if (c == '\0')
+	if ((char)c == '\0')
 	{
 		while (*str++)
 			;
@@ -36,7 +36,7 @@ int	main(void)
 	char	*str;
 
 	str = "teste";
-	ret = ft_strchr(str, 357);
+	ret = ft_strchr(str, 1024);
 	printf("%s", ret);
 	return (0);
 }*/
