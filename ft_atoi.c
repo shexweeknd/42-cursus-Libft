@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:27:31 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:20:20 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 08:26:31 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,17 @@ int	is_space(char c)
 
 int	ft_atoi(char *str)
 {
-	int		i;
-	int		sign;
-	int		ret;
+	int	i;
+	int	sign;
+	int	ret;
 
 	i = 0;
 	while (is_space(str[i]))
 		i++;
 	sign = 1;
-	while ((str[i] == '-') || str[i] == '+')
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign *= -1;
+		sign = -1;
 		i++;
 	}
 	ret = 0;
@@ -51,3 +50,16 @@ int	ft_atoi(char *str)
 	ret *= sign;
 	return (ret);
 }
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int	main(void)
+{
+	int ret;
+
+	ret = ft_atoi("-54");
+	printf("%d\n", ret); // expected 0
+	return (0);
+}*/

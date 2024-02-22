@@ -5,52 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 08:58:20 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:30:57 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/22 07:44:56 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-char	*ft_strnstr(const char *str, const char *to_find, int n)
+char    *ft_strnstr(void *str, void *to_find, int n)
 {
-	int		i;
-	int		j;
+    int i;
 
-	if (!*to_find)
-		return ((char *)str);
-	j = 0;
-	while (n--)
-	{
-		if (*(str + j) == *to_find)
-		{
-			i = 0;
-			while (*(str + j) == *(to_find + i))
-			{
-				if (!*(to_find + i + 1))
-					return ((char *)(str + j - i));
-				i++;
-				j++;
-			}
-		}
-		j++;
-	}
-	return (0);
+    i = 0;
+    while (n--)
+    {
+        if (*(unsigned char *)str && *(unsigned char *)str++ == *(unsigned char *)(to_find + i))
+        {
+            if (*(unsigned char *)(to_find + (i + 1)) == '\0')
+                return ((char *)(--str - i));
+            i++;
+        }
+    }
+    return (NULL);
 }
 
 /*
 #include <stdio.h>
-#include <string.h>
 
-int	main(void)
+int main(void)
 {
-	char *str;
-	char *to_find;
-	char *ret;
-
-	str = "Bonjour je suis a 42\n";
-	to_find = "";
-	ret = ft_strnstr(str, to_find, 3);
-	printf("%s\n", ret);
-	return (0);
+    char *ret;
+    char *str = "qwerty";
+    char *to_find = "erty";
+    
+    ret = ft_strnstr(str, to_find, 5); //expected NULL
+    printf("%s\n", ret);
+    return (0);
 }*/

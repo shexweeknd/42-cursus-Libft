@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:14:09 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:22:04 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:59:58 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	ft_memcmp(void *s1, void *s2, int n)
 	source_ln = 0;
 	while (*(unsigned char *)(s1 + source_ln))
 		source_ln++;
-	if (++source_ln < n)
-		exit(1);
 	while (n--)
 	{
-		if (*(unsigned char *)s1++ > *(unsigned char *)s2++)
+		if (*(unsigned char *)s1 > *(unsigned char *)s2)
 			return (1);
 		else if (*(unsigned char *)s1++ < *(unsigned char *)s2++)
 			return (-1);
@@ -38,10 +36,10 @@ int	ft_memcmp(void *s1, void *s2, int n)
 
 int	main(void)
 {
-	char *s1 = "bonjeur";
-	char *s2 = "bonjeur";
+	char *s1 = "";
+	char *s2 = "test";
 	int ret;
-	int n = 7;
+	int n = 4;
 
 	ret = ft_memcmp(s1, s2, n);
 	printf("%d\n", ret);

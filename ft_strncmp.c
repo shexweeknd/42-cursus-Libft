@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:19:12 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:06:26 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:39:01 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	if (s1[i] == s2[i])
 		return (0);
 	else
-		return (s1[i] - s2[i]);
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 /*
 #include <stdio.h>
 int	main(void)
 {
-	char	s1[] = "aze";
-	char	s2[] = "az";
+	char	s1[] = "abcdef";
+	char	s2[] = "abc\375xx";
 	unsigned int n;
 
-	n = 6;
+	n = 5;
 	printf("%d\n", ft_strncmp(s1, s2, n));
 	return (0);
 }*/

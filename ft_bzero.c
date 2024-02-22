@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:46:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:04:54 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:50:35 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,49 @@
 
 void	ft_bzero(void *s, int n)
 {
+	int	i;
+
+	i = 0;
 	while (n--)
-		*(unsigned int *)s++ = 0;
+		*(unsigned char *)(s + i++) = 0;
 }
 
 /*
 #include <stdio.h>
+#include <stdlib.h>
 #include <strings.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	int nbr;
+	int i;
+	int counter;
+	char *buffer;
 
-	if (argc != 2)
+	counter = 12;
+	buffer = (char *)malloc(sizeof(int )* counter);
+
+	i = 0;
+	while (i < counter)
+		buffer[i++] = 1;
+
+	i = 0;
+	while (i < counter)
 	{
-		printf("Ajoutez un argument\n");
-		return (1);
+		printf("%d", buffer[i++]);
 	}
-	printf("L'argument : %s\n", argv[1]);
+	printf("\n");
+
 	nbr = 4;
-	ft_bzero(argv[1], nbr);
-	printf("Le resultat : %s\n", argv[1]);
+	bzero(buffer, nbr);
+
+	i = 0;
+	while (i < counter)
+	{
+		printf("%d", buffer[i++]);
+	}
+	printf("\n");
+
+	free(buffer);
 	return (0);
 }*/

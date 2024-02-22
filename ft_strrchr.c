@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:11:16 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 13:30:35 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:17:04 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ char	*ft_strrchr(char *str, char c)
 {
 	char	*res;
 
+	if (c == '\0')
+	{
+		while (*str++)
+			;
+		return ((char *)(--str));
+	}
 	res = 0;
 	while (*str)
 		if (*str++ == c)
-			res = str - 2;
+			res = str - 1;
 	return (res);
 }
 
@@ -31,8 +37,8 @@ int	main(void)
 	char *ret;
 	char *str;
 
-	str = "Bonjour j2 suis a 42\n";
-	ret = ft_strrchr(str, '2');
+	str = "teste";
+	ret = ft_strrchr(str, 101);
 	printf("%s", ret);
 	return (0);
 }*/
