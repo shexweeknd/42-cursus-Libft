@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:11:16 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:05:06 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:42:10 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *str, int c)
 {
 	char	*res;
 
-	if (c == '\0')
+	if ((char)c == '\0')
 	{
 		while (*str++)
 			;
