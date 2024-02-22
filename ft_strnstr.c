@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 11:28:07 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:32:31 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ char	*ft_strnstr(void *str, void *to_find, int n)
 	if (!*(unsigned char *)to_find)
 		return ((char *)str);
 	i = 0;
-	while (n-- && *(unsigned char *)str)
+	while (n--)
 	{
+		if (*(unsigned char *)str != *(unsigned char *)(to_find + i))
+			i = 0;
 		if (*(unsigned char *)str
 			&& *(unsigned char *)str++ == *(unsigned char *)(to_find + i))
 		{
@@ -28,8 +30,6 @@ char	*ft_strnstr(void *str, void *to_find, int n)
 				return ((char *)(--str - i));
 			i++;
 		}
-        else if (*(unsigned char *)str++ != *(unsigned char *)(to_find + i))
-            i = 0;
 	}
 	return (NULL);
 }
@@ -39,11 +39,11 @@ char	*ft_strnstr(void *str, void *to_find, int n)
 
 int	main(void)
 {
-    char *ret;
-    char *str = "lorem ipsum dolor sit amet";
-    char *to_find = "ipsum";
-    
-    ret = ft_strnstr(str, to_find, 30);
-    printf("%s\n", ret);
-    return (0);
+	char *ret;
+	char *str = "lorem ipsum dolor sit amet";
+	char *to_find = "ipsum";
+
+	ret = ft_strnstr(str, to_find, 30);
+	printf("%s\n", ret);
+	return (0);
 }*/
