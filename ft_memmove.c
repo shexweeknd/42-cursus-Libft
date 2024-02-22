@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:12:17 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 08:43:13 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:26:44 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dest, const void *src, int n)
 {
 	unsigned char	*dest_copy;
 
+	if (!dest && !src)
+		return (dest);
 	dest_copy = (unsigned char *)dest;
 	if (n == 0)
 		return (dest);
