@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:27:31 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 08:26:31 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:22:45 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	ft_atoi(char *str)
 		sign = -1;
 		i++;
 	}
+	else if (str[i] == '+')
+		i++;
 	ret = 0;
 	while (is_number(str[i]))
 	{
@@ -59,7 +61,7 @@ int	main(void)
 {
 	int ret;
 
-	ret = ft_atoi("-54");
+	ret = ft_atoi("+54");
 	printf("%d\n", ret); // expected 0
 	return (0);
 }*/
