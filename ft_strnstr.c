@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 15:42:14 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:43:09 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 	return (NULL);
 }
 
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -47,4 +47,4 @@ int	main(void)
 	ret = ft_strnstr(str, to_find, 15);
 	printf("%s\n", ret);
 	return (0);
-}
+}*/
