@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:45:10 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:06:14 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
 	int	i;
 
-	if (!*(unsigned char *)to_find || !*(unsigned char *)str)
+	if (!*(unsigned char *)to_find)
 		return ((char *)str);
+	if (!*(unsigned char *)str)
+		return (NULL);
 	i = 0;
 	while (n--)
 	{
@@ -41,9 +43,9 @@ int	main(void)
 {
 	char *ret;
 	char *str = "";
-	char *to_find = "xx";
+	char *to_find = "teste";
 
-	ret = ft_strnstr(str, to_find, 4294967295);
+	ret = ft_strnstr(str, to_find, 0);
 	printf("%s\n", ret);
 	return (0);
 }*/
