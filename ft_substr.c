@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
+/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:59:21 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 17:08:18 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:53:38 by tiny             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 	unsigned int	j;
 
-	ret = (char *)malloc(sizeof(char) * len);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (0);
 	i = 0;
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ret);
 }
 
-/*
+
 #include <stdio.h>
 
 int	main(void)
@@ -45,8 +45,8 @@ int	main(void)
 	int len;
 
 	s = "lorem ipsum dolor is amet";
-	start = 4;
-	len = 0;
+	start = 7;
+	len = 10;
 	ret = ft_substr(s, start, len);
 	printf("%s\n", ret); // expected "m ipsum "
 	free(ret);
