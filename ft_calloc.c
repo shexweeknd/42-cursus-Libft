@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 09:45:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:30:57 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:31:57 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t n, size_t size)
 	total = n * size;
 	ret = (void *)malloc(total);
 	if (!ret)
-		return (0);	
+		return (0);
 	ft_bzero(ret, total);
 	if (!ret || total < -2147483648 || total > 2147483647)
 		return (0);
@@ -39,9 +39,9 @@ void	*ft_calloc(size_t n, size_t size)
 }
 
 /*
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <unistd.h>
 
 int main (void)
