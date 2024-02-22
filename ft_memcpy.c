@@ -6,14 +6,14 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:04:22 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 08:32:55 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:48:48 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, int n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	void	*dest_copy;
 

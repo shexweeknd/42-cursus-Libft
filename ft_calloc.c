@@ -6,14 +6,14 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 09:45:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 08:49:49 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:43:56 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_calloc(int n, int size)
+void	*ft_calloc(size_t n, size_t size)
 {
 	char	*ret;
 	long	total;

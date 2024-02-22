@@ -6,14 +6,14 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:03:18 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 14:50:14 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:51:21 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strchr(char *str, char c)
+char	*ft_strchr(const char *str, int c)
 {
 	if (c == '\0')
 	{
@@ -22,7 +22,7 @@ char	*ft_strchr(char *str, char c)
 		return (--str);
 	}
 	while (*str)
-		if (*str++ == c)
+		if (*str++ == (char)c)
 			return (--str);
 	return (0);
 }

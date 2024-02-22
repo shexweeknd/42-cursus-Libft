@@ -6,14 +6,14 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:12:17 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 13:26:44 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:49:39 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, int n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dest_copy;
 

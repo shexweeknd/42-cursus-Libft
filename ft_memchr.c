@@ -6,13 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:06:10 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/21 15:42:36 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:45:33 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *str, char c, int b_size)
+void	*ft_memchr(const void *str, int c, size_t b_size)
 {
 	char	*ret;
 
