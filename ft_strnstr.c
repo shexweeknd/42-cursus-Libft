@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 07:44:56 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:15:57 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char    *ft_strnstr(void *str, void *to_find, int n)
 {
     int i;
 
+    if (!*(unsigned char *)to_find)
+        return ((char *)str);
     i = 0;
     while (n--)
     {
@@ -35,8 +37,8 @@ char    *ft_strnstr(void *str, void *to_find, int n)
 int main(void)
 {
     char *ret;
-    char *str = "qwerty";
-    char *to_find = "erty";
+    char *str = "lorem ipsum dolor sit amet";
+    char *to_find = "";
     
     ret = ft_strnstr(str, to_find, 5); //expected NULL
     printf("%s\n", ret);
