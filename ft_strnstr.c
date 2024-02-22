@@ -6,13 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 13:41:28 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:58:35 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char	*ft_strnstr(void *str, void *to_find, int n)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
 	int	i;
 

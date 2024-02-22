@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:20:30 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 13:54:26 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:58:47 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size);
 unsigned int	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
-char			*ft_strnstr(const char *str, const char *to_find, int n);
+char			*ft_strnstr(const char *str, const char *to_find, size_t n);
 char			*ft_strrchr(const char *str, int c);
 
 #endif
