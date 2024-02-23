@@ -6,48 +6,74 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:25 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/23 14:17:29 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:20:05 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isinside(const char c, const char *set)
+static size_t	char_check(char const *str, char const c)
 {
-	int	i;
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (*(str + i))
+	{
+		if (*(str + i) == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static size_t	str_len(char const *str)
+{
+	size_t	i;
 
 	i = 0;
-	while (set[i])
-		if ((unsigned char)c == (unsigned char)set[i++])
-			return (1);
-	return (0);
+	while (*(str + i))
+		i++;
+	return (i);
+}
+
+static char	*str_new(size_t n)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
+	return (str);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*buffer;
-	char	*ptr;
-	size_t	len;
-	int		i;
+	char	*trim;
+	size_t	start;
+	size_t	end;
+	size_t	i;
 
-	len = ft_strlen(s1);
-	ptr = (char *)&s1[len - 1];
-	buffer = (char *)malloc(sizeof(unsigned char) * len + 1);
-	if (!buffer)
-		return (0);
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	while (*(s1 + start) && char_check(set, *(s1 + start)))
+		start++;
+	end = str_len(s1);
+	while (end > start && char_check(set, *(s1 + (end - 1))))
+		end--;
+	trim = str_new(end - start);
+	if (!trim)
+		return (NULL);
 	i = 0;
-	while (*(unsigned char *)s1 && ft_isinside(*s1, set))
-		s1++;
-	while (ft_isinside(*ptr, set))
-		ptr--;
-	i = 0;
-	while (s1[i] && ((char *)&s1[i] <= ptr))
+	while ((start + i) < end)
 	{
-		buffer[i] = s1[i];
+		*(trim + i) = *(s1 + (start + i));
 		i++;
 	}
-	buffer[i] = '\0';
-	return (buffer);
+	*(trim + i) = '\0';
+	return (trim);
 }
 
 /*

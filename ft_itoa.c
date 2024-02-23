@@ -6,79 +6,73 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:15:40 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:18:46 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isnegative(int n)
+static int	nbr_len(int nbr)
 {
-	if (n < 0)
-		return (1);
-	return (0);
-}
+	int	len;
 
-static unsigned int	ft_getitoasize(unsigned int n)
-{
-	long	res;
-
-	res = 1;
-	if ((n / 10) == 0)
-		return (1);
-	return (res + ft_getitoasize(n / 10));
-}
-
-static void	ft_long_recurse(char *buffer, unsigned int index, int len,
-		unsigned long number)
-{
-	if (number < 10 && len > 0)
-		buffer[len] = '\0';
-	else if (number >= 10 && len > 0)
-		ft_long_recurse(buffer, index + 1, len, number / 10);
-	if (len > 0)
-		buffer[(len - (index + 1))] = (char)((number % 10) + 48);
-	else if (len < 0)
+	len = 0;
+	if (nbr < 1)
+		len++;
+	while (nbr)
 	{
-		buffer[0] = '-';
-		ft_long_recurse(buffer, 1, len * -1 + 2, number);
+		nbr /= 10;
+		len++;
 	}
-	return ;
+	return (len);
 }
 
-static char	*call_recurse(char *buffer, int len, int n)
+static long long	abs_val(long long n)
 {
-	if (ft_isnegative(n))
-		ft_long_recurse(buffer, 0, -len, -n);
-	else if (!ft_isnegative(n))
-		ft_long_recurse(buffer, 0, len, n);
-	return (buffer);
+	long long	nb;
+
+	nb = 1;
+	if (n < 0)
+		nb *= -n;
+	else
+		nb *= n;
+	return (nb);
+}
+
+static char	*str_new(size_t n)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*buffer;
-	unsigned int	len;
+	unsigned int	nbr;
+	int				sign;
+	int				len;
+	char			*str;
 
-	if (n == -2147483648)
+	sign = 0;
+	if (n < 0)
+		sign = 1;
+	len = nbr_len(n);
+	str = str_new(len);
+	if (!str)
+		return (NULL);
+	*(str + len) = '\0';
+	nbr = abs_val(n);
+	while (len--)
 	{
-		buffer = (char *)malloc(sizeof(char) * 12);
-		ft_long_recurse(buffer, 0, -10, 2147483648);
-		return (buffer);
+		*(str + len) = 48 + nbr % 10;
+		nbr /= 10;
 	}
-	if (ft_isnegative(n))
-	{
-		len = ft_getitoasize(-n);
-		buffer = (char *)malloc(sizeof(char) * (len + 2));
-	}
-	else if (!ft_isnegative(n))
-	{
-		len = ft_getitoasize(n);
-		buffer = (char *)malloc(sizeof(char) * (len + 1));
-	}
-	if (!buffer)
-		return (0);
-	return (call_recurse(buffer, len, n));
+	if (sign)
+		*(str) = 45;
+	return (str);
 }
 
 /*
