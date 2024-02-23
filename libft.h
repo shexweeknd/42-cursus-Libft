@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:20:30 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 03:40:17 by tiny             ###   ########.fr       */
+/*   Updated: 2024/02/23 09:30:22 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
+char			*ft_itoa(int n);
 
 /*Utils*/
 char			*ft_chartostr(char c);
 int				ft_count_occ(const char *str, unsigned char c);
+char			*ft_getfirst(char *str, unsigned char c, int occ);
+unsigned int	ft_getitoasize(unsigned int n);
 
 #endif

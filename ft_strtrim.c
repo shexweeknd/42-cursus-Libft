@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:25 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/22 19:30:46 by tiny             ###   ########.fr       */
+/*   Updated: 2024/02/23 08:05:02 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
-}
 
 int	ft_isinside(const char c, const char *set)
 {
@@ -48,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	i = 0;
 	while (*(unsigned char *)s1 && ft_isinside(*s1, set))
-		(unsigned char *)s1++;
+		s1++;
 	while (ft_isinside(*ptr, set))
 		ptr--;
 	i = 0;

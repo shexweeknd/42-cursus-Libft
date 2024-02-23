@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/23 03:40:13 by tiny             ###   ########.fr       */
+/*   Updated: 2024/02/23 09:17:16 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,106 @@ int	ft_count_occ(const char *str, unsigned char c)
 	return (count);
 }
 
-char    *ft_chartostr(char c)
+char	*ft_chartostr(char c)
 {
-    char *str;
+	char	*str;
 
-    str = c;
-    return (str);
+	str = (char *)malloc(sizeof(char) * 2);
+	if (!str)
+		return (0);
+	str[0] = c;
+	str[1] = '\0';
+	return ((char *)str);
+}
+
+char	*set_offset(char *str, unsigned char c, char *str_offset, int occ)
+{
+	int	i;
+	int	size;
+
+	size = ft_strlen(str);
+	i = 0;
+	while (i <= occ && str[--size])
+	{
+		str_offset = &str[size];
+		if (str[size] == c)
+			i++;
+	}
+	return (str_offset);
+}
+
+char	*ft_getfirst(char *str, unsigned char c, int occ)
+{
+	char	*word;
+	char	*str_offset;
+	size_t	size;
+	int		i;
+
+	size = ft_strlen(str);
+	word = (char *)malloc(sizeof(char) * size);
+	if (!word)
+		return (0);
+	str_offset = 0;
+	str_offset = set_offset(str, c, str_offset, occ);
+	if (str_offset[0] == c)
+		str_offset++;
+	i = 0;
+	while (str_offset[i] && str_offset[i] != c)
+	{
+		word[i] = str_offset[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	*buffer1d;
-	char	*buffer2d;
-	char	*temp;
-	int		size;
+	char	**buffer2d;
+	int		occ;
+	int		i;
 
-	buffer1d = ft_split(s, ft_chartostr(c));
+	buffer1d = ft_chartostr(c);
 	if (!buffer1d)
 		return (0);
-    size = ft_count_occ(s, c);
-    buffer2d = (char **)malloc(sizeof(char *) * size + 1);
-    if (!buffer2d)
-    {
-        free(buffer1d);
-        return (0);
-    }
-    i = 0;
-    while (occ)
-    {
-        temp = ft_firstocc(buffer1d, occ--);
-        buffer2d[i] = temp;
-        i++;
-    }
-    free(buffer1d);
+	buffer1d = ft_strtrim(s, buffer1d);
+	if (!buffer1d)
+		return (0);
+	occ = ft_count_occ(buffer1d, c);
+	buffer2d = (char **)malloc(sizeof(char *) * (occ + 2));
+	if (!buffer2d)
+	{
+		free(buffer1d);
+		return (0);
+	}
+	i = 0;
+	while (occ >= 0)
+		buffer2d[i++] = ft_getfirst(buffer1d, (unsigned char)c, occ--);
+	free(buffer1d);
+	buffer2d[i] = NULL;
 	return (buffer2d);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	const char *str;
+	char **res;
+	int i;
+
+	str = "lorem ipsum dolor sit asmet";
+	res = ft_split(str, ' ');
+	i = 0;
+	while (res[i])
+	{
+		printf("%s\n", res[i]);
+		free(res[i]);
+		i++;
+	}
+	i = 0;
+	free(res);
+	return (0);
+}*/
