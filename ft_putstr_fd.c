@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:57:14 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:10:31 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:27:44 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s)
-		write(fd, s, 1);
+		write(fd, s++, 1);
 }
