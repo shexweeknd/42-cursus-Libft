@@ -6,107 +6,91 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/23 14:16:43 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:03:54 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_occ(const char *str, unsigned char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	count;
+	size_t	i;
 
-	i = 0;
 	count = 0;
-	while (str[i])
+	i = 0;
+	while (*(s + i))
 	{
-		if ((unsigned char)str[i] == c)
+		if (*(s + i) != c)
+		{
 			count++;
-		i++;
+			while (*(s + i) && *(s + i) != c)
+				i++;
+		}
+		else if (*(s + i) == c)
+			i++;
 	}
 	return (count);
 }
 
-static char	*ft_chartostr(char c)
+static size_t	get_word_len(char const *s, char c)
 {
-	char	*str;
+	size_t	i;
 
-	str = (char *)malloc(sizeof(char) * 2);
-	if (!str)
-		return (0);
-	str[0] = c;
-	str[1] = '\0';
-	return ((char *)str);
+	i = 0;
+	while (*(s + i) && *(s + i) != c)
+		i++;
+	return (i);
 }
 
-static char	*set_offset(char *str, unsigned char c, char *str_offset, int occ)
+static void	free_array(size_t i, char **array)
 {
-	int	i;
-	int	size;
-
-	size = ft_strlen(str);
-	i = 0;
-	while (i <= occ && str[--size])
+	while (i > 0)
 	{
-		str_offset = &str[size];
-		if (str[size] == c)
-			i++;
+		i--;
+		free(*(array + i));
 	}
-	return (str_offset);
+	free(array);
 }
 
-static char	*ft_getfirst(char *str, unsigned char c, int occ)
+static char	**split(char const *s, char c, char **array, size_t words_count)
 {
-	char	*word;
-	char	*str_offset;
-	size_t	size;
-	int		i;
+	size_t	i;
+	size_t	j;
 
-	size = ft_strlen(str);
-	word = (char *)malloc(sizeof(char) * size);
-	if (!word)
-		return (0);
-	str_offset = 0;
-	str_offset = set_offset(str, c, str_offset, occ);
-	if (str_offset[0] == c)
-		str_offset++;
 	i = 0;
-	while (str_offset[i] && str_offset[i] != c)
+	j = 0;
+	while (i < words_count)
 	{
-		word[i] = str_offset[i];
+		while (*(s + j) && *(s + j) == c)
+			j++;
+		*(array + i) = ft_substr(s, j, get_word_len(&*(s + j), c));
+		if (!*(array + i))
+		{
+			free_array(i, array);
+			return (NULL);
+		}
+		while (*(s + j) && *(s + j) != c)
+			j++;
 		i++;
 	}
-	word[i] = '\0';
-	return (word);
+	*(array + i) = NULL;
+	return (array);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*buffer1d;
-	char	**buffer2d;
-	int		occ;
-	int		i;
+	char	**array;
+	size_t	words;
 
-	buffer1d = ft_chartostr(c);
-	if (!buffer1d)
-		return (0);
-	buffer1d = ft_strtrim(s, buffer1d);
-	if (!buffer1d)
-		return (0);
-	occ = ft_count_occ(buffer1d, c);
-	buffer2d = (char **)malloc(sizeof(char *) * (occ + 2));
-	if (!buffer2d)
-	{
-		free(buffer1d);
-		return (0);
-	}
-	i = 0;
-	while (occ >= 0)
-		buffer2d[i++] = ft_getfirst(buffer1d, (unsigned char)c, occ--);
-	free(buffer1d);
-	buffer2d[i] = NULL;
-	return (buffer2d);
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	array = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!array)
+		return (NULL);
+	array = split(s, c, array, words);
+	return (array);
 }
 
 /*
