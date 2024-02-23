@@ -1,48 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 13:13:23 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:12:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/23 14:04:14 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/23 14:10:55 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	char	*ret;
-	int		size;
+	unsigned int	n;
 
-	size = 0;
-	while (s[size])
-		size++;
-	ret = (char *)malloc(sizeof(char) * (size + 1));
-	if (!ret)
-		return (0);
-	size = 0;
-	while (s[size])
+	if (nb < 0)
 	{
-		*(ret + size) = s[size];
-		size++;
+		ft_putchar_fd('-', fd);
+		n = -nb;
 	}
-	ret[size] = '\0';
-	return (ret);
+	else
+		n = nb;
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+		n = n % 10;
+	}
+	ft_putchar(n + '0', fd);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char *str = "";
-	char *ret;
-	
-	ret = ft_strdup(str);
-	printf("Le resultat : %d\n", ret[0]);
-	free(ret);
-	return (0);
-}*/

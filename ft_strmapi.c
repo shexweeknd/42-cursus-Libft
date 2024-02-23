@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 13:13:23 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:12:51 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/23 13:28:36 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/23 14:13:09 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*ret;
-	int		size;
+	unsigned int	i;
+	char			*buffer;
+	size_t			len;
 
-	size = 0;
-	while (s[size])
-		size++;
-	ret = (char *)malloc(sizeof(char) * (size + 1));
-	if (!ret)
+	len = ft_strlen(s);
+	buffer = (char *)malloc(sizeof(char) * (len + 1));
+	if (!buffer)
 		return (0);
-	size = 0;
-	while (s[size])
+	i = 0;
+	while (s[i])
 	{
-		*(ret + size) = s[size];
-		size++;
+		buffer[i] = (*f)(i, s[i]);
+		i++;
 	}
-	ret[size] = '\0';
-	return (ret);
+	buffer[i] = '\0';
+	return (buffer);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char *str = "";
-	char *ret;
-	
-	ret = ft_strdup(str);
-	printf("Le resultat : %d\n", ret[0]);
-	free(ret);
-	return (0);
-}*/

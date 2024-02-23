@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 16:04:22 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:12:22 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/23 14:00:53 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/23 14:10:13 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	void	*dest_copy;
-
-	dest_copy = dest;
-	if (!n)
-		return (dest);
-	if (dest == NULL && src == NULL)
-		return (0);
-	while (n--)
-		*(unsigned char *)dest++ = *(const unsigned char *)src++;
-	return (dest_copy);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char src[] = "Nuts Channel Is Back";
-
-	printf("%s\n", src);
-	ft_memcpy(NULL, NULL, 5);
-	printf("%s\n", src);
-	return (0);
-}*/

@@ -6,13 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:57:02 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 14:04:08 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:17:02 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_cnt(const char *str)
+static unsigned int	ft_cnt(const char *str)
 {
 	unsigned int	i;
 

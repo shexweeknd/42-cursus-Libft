@@ -3,27 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:18:07 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 16:44:00 by tiny             ###   ########.fr       */
+/*   Updated: 2024/02/23 14:13:01 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-/*
-size_t	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
-}
-*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ret;

@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 15:03:18 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:12:39 by hramaros         ###   ########.fr       */
+/*   Created: 2024/02/23 13:53:46 by hramaros          #+#    #+#             */
+/*   Updated: 2024/02/23 13:56:36 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strchr(const char *str, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	if ((char)c == '\0')
-	{
-		while (*str++)
-			;
-		return ((char *)(--str));
-	}
-	while (*str)
-		if (*str++ == (char)c)
-			return ((char *)(--str));
-	return (0);
+	write(fd, &c, 1);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	*ret;
-	char	*str;
-
-	str = "teste";
-	ret = ft_strchr(str, 1024);
-	printf("%s", ret);
-	return (0);
-}*/

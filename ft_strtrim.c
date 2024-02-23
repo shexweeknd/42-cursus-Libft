@@ -6,14 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:25 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/23 08:05:02 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:17:29 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_isinside(const char c, const char *set)
+static int	ft_isinside(const char c, const char *set)
 {
 	int	i;
 

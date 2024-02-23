@@ -6,14 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by tiny              #+#    #+#             */
-/*   Updated: 2024/02/23 09:17:16 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:16:43 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_count_occ(const char *str, unsigned char c)
+static int	ft_count_occ(const char *str, unsigned char c)
 {
 	int	i;
 	int	count;
@@ -29,7 +28,7 @@ int	ft_count_occ(const char *str, unsigned char c)
 	return (count);
 }
 
-char	*ft_chartostr(char c)
+static char	*ft_chartostr(char c)
 {
 	char	*str;
 
@@ -41,7 +40,7 @@ char	*ft_chartostr(char c)
 	return ((char *)str);
 }
 
-char	*set_offset(char *str, unsigned char c, char *str_offset, int occ)
+static char	*set_offset(char *str, unsigned char c, char *str_offset, int occ)
 {
 	int	i;
 	int	size;
@@ -57,7 +56,7 @@ char	*set_offset(char *str, unsigned char c, char *str_offset, int occ)
 	return (str_offset);
 }
 
-char	*ft_getfirst(char *str, unsigned char c, int occ)
+static char	*ft_getfirst(char *str, unsigned char c, int occ)
 {
 	char	*word;
 	char	*str_offset;

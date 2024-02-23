@@ -6,21 +6,20 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 13:27:02 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:15:40 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_isnegative(int n)
+static int	ft_isnegative(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-unsigned int	ft_getitoasize(unsigned int n)
+static unsigned int	ft_getitoasize(unsigned int n)
 {
 	long	res;
 
@@ -30,7 +29,7 @@ unsigned int	ft_getitoasize(unsigned int n)
 	return (res + ft_getitoasize(n / 10));
 }
 
-void	ft_long_recurse(char *buffer, unsigned int index, int len,
+static void	ft_long_recurse(char *buffer, unsigned int index, int len,
 		unsigned long number)
 {
 	if (number < 10 && len > 0)
@@ -47,7 +46,7 @@ void	ft_long_recurse(char *buffer, unsigned int index, int len,
 	return ;
 }
 
-char	*call_recurse(char *buffer, int len, int n)
+static char	*call_recurse(char *buffer, int len, int n)
 {
 	if (ft_isnegative(n))
 		ft_long_recurse(buffer, 0, -len, -n);

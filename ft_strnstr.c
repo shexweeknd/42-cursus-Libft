@@ -6,12 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:54:27 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/22 15:43:09 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:13:16 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
