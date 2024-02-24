@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
+/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:12:26 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 17:13:10 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:44:11 by tiny             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!*lst || !new)
+	if (!new)
 		return ;
 	new->next = *lst;
 	*lst = new;

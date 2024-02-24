@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
+/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:46:30 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 17:13:24 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:23:25 by tiny             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->next)
+	while (lst)
+	{
+		if (lst->next == NULL)
+			break ;
 		lst = lst->next;
+	}
 	return (lst);
 }

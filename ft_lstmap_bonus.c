@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
+/*   By: tiny <tiny@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:18:39 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 17:13:27 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:22:19 by tiny             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*res_el;
 	t_list	*first_el;
+	void	*content;
 
-	if (!lst || !(*f) || !(*del))
-		return (0);
-	first_el = 0;
+	if (!lst)
+		return (NULL);
+	first_el = NULL;
 	while (lst)
 	{
-		res_el = ft_lstnew((*f)(lst->content));
-		if (!res_el)
+		content = (*f)(lst->content);
+		res_el = ft_lstnew(content);
+		if (res_el == NULL)
 		{
-			ft_lstclear(&(first_el), (*del));
-			break ;
+			(*del)(content);
+			ft_lstclear(&first_el, (*del));
+			return (NULL);
 		}
-		ft_lstadd_back(&(first_el), res_el);
+		ft_lstadd_back(&first_el, res_el);
 		lst = lst->next;
 	}
 	return (first_el);
