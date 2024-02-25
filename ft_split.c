@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 16:48:00 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:40:11 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_word_count(const char *s, unsigned char c)
 	size_t	count;
 
 	count = 0;
-	if (!s)
+	if (!*s)
 		return (0);
 	while (*s == c)
 		s++;
@@ -101,7 +101,6 @@ char	**ft_split(char const *s, char c)
 	buffer2d = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!buffer2d)
 		return (NULL);
-	buffer2d[word_count] = NULL;
 	i = 0;
 	position = 0;
 	while (i < word_count)
@@ -114,6 +113,7 @@ char	**ft_split(char const *s, char c)
 		}
 		position = ft_decalage(s, c, position);
 	}
+	buffer2d[word_count] = NULL;
 	return (buffer2d);
 }
 
