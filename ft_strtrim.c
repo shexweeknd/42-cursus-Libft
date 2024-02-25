@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:25 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 14:25:20 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:59:03 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ static char	*str_new(size_t n)
 
 	str = (char *)malloc(sizeof(char) * (n + 1));
 	if (!str)
+	{
+		free(str);
 		return (NULL);
+	}
 	return (str);
 }
 
