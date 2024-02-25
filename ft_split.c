@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 14:58:07 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:04:18 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ static char	*ft_firstword(char *str, char c)
 		first_word_len++;
 	word = (char *)malloc(sizeof(char) * (first_word_len + 1));
 	if (!word)
-	{
-		free(word);
 		return (NULL);
-	}
 	i = 0;
 	while (*str != c && *str != '\0')
 	{
@@ -77,6 +74,16 @@ static char	*ft_decalage(char *trimmed_str, char c)
 		trimmed_str++;
 	}
 	return (trimmed_str);
+}
+
+static void ft_free(char *buffer)
+{
+	int i;
+
+	i = 0;
+	while (*(buffer + i))
+		free(*(buffer + i++));
+	free(buffer);
 }
 
 char	**ft_split(char const *s, char c)
@@ -104,7 +111,10 @@ char	**ft_split(char const *s, char c)
 	{
 		buffer2d[i] = ft_firstword(trimmed_str, c);
 		if(!buffer2d[i++])
+		{
+			ft_free(buffer2d);
 			return (NULL);
+		}
 		trimmed_str = ft_decalage(trimmed_str, c);
 	}
 	free(tmp);
