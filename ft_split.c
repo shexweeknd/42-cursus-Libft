@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 15:05:40 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:16:05 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	ft_word_count(const char *s, unsigned char c)
 	return (count);
 }
 
-//Memory allocation 
+// Memory allocation
 static char	*ft_firstword(char *str, char c)
 {
 	char	*word;
@@ -62,23 +62,23 @@ static char	*ft_firstword(char *str, char c)
 	return (word);
 }
 
-static char	*ft_decalage(char *trimmed_str, char c)
+static int ft_decalage(char *trimmed_str, char c, int position)
 {
-	while (*trimmed_str != '\0')
+	while (trimmed_str[position] != '\0')
 	{
-		if (*trimmed_str == c && *(trimmed_str + 1) != c)
+		if (trimmed_str[position] == c && trimmed_str[position + 1] != c)
 		{
-			trimmed_str++;
+			position++;
 			break ;
 		}
-		trimmed_str++;
+		position++;
 	}
-	return (trimmed_str);
+	return (position);
 }
 
-static void ft_free(char **buffer)
+static void	ft_free(char **buffer)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*(buffer + i))
@@ -90,34 +90,33 @@ char	**ft_split(char const *s, char c)
 {
 	char	**buffer2d;
 	char	*trimmed_str;
-	char	*tmp;
 	size_t	word_count;
 	size_t	i;
+	int		position;
 
 	if (!s)
 		return (NULL);
-	tmp = &c;
-	trimmed_str = ft_strtrim(s, tmp);
+	trimmed_str = ft_strtrim(s, &c);
 	if (!trimmed_str)
 		return (NULL);
-	tmp = trimmed_str;
 	word_count = ft_word_count(trimmed_str, c);
 	buffer2d = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!buffer2d)
 		return (NULL);
 	buffer2d[word_count] = NULL;
 	i = 0;
+	position = 0;
 	while (i < word_count)
 	{
-		buffer2d[i] = ft_firstword(trimmed_str, c);
-		if(!buffer2d[i++])
+		buffer2d[i] = ft_firstword(trimmed_str + position, c);
+		if (!buffer2d[i++])
 		{
 			ft_free(buffer2d);
 			return (NULL);
 		}
-		trimmed_str = ft_decalage(trimmed_str, c);
+		position = ft_decalage(trimmed_str, c, position);
 	}
-	free(tmp);
+	free(trimmed_str);
 	return (buffer2d);
 }
 
