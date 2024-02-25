@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:20:30 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 17:04:05 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:28:33 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/*Static section*/
+size_t				ft_word_count(const char *s, unsigned char c);
 #endif

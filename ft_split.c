@@ -6,26 +6,32 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 10:40:15 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:38:47 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_word_count(const char *s, unsigned char c)
+size_t	ft_word_count(const char *s, unsigned char c)
 {
 	size_t	count;
-	int		i;
 
 	count = 0;
-	i = 0;
-	while (s[i])
+	while (*s == c)
+		s++;
+	while (*s)
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (*s != c)
+		{
 			count++;
-		i++;
+			while (*s != c && *s != '\0')
+				s++;
+			if (!*s)
+				return (count);
+		}
+		s++;
 	}
-	return (count + 1);
+	return (count);
 }
 
 static char	*ft_firstword(char *str, char c)
