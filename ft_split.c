@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 14:55:40 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:58:07 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (i < word_count)
 	{
-		buffer2d[i++] = ft_firstword(trimmed_str, c);
+		buffer2d[i] = ft_firstword(trimmed_str, c);
+		if(!buffer2d[i++])
+			return (NULL);
 		trimmed_str = ft_decalage(trimmed_str, c);
 	}
 	free(tmp);
