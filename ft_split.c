@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 15:55:59 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:24:40 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ size_t	ft_word_count(const char *s, unsigned char c)
 static char	*ft_firstword(char *str, char c)
 {
 	char	*word;
-	int		first_word_len;
+	int		f_word_len;
 	int		i;
 
-	first_word_len = 0;
-	while (str[first_word_len] == c)
+	f_word_len = 0;
+	while (str[f_word_len] == c)
 		str++;
-	while (str[first_word_len] != c && str[first_word_len] != '\0')
-		first_word_len++;
-	word = (char *)malloc(sizeof(char) * (first_word_len + 1));
+	while (str[f_word_len] != c && str[f_word_len] != '\0')
+		f_word_len++;
+	word = (char *)malloc(sizeof(char) * (f_word_len + 1));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -58,7 +58,7 @@ static char	*ft_firstword(char *str, char c)
 			word[i++] = *str;
 		str++;
 	}
-	word[first_word_len] = '\0';
+	word[f_word_len] = '\0';
 	return (word);
 }
 
@@ -95,8 +95,6 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	int		position;
 
-	if (!s)
-		return (NULL);
 	word_count = ft_word_count(s, c);
 	buffer2d = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!buffer2d)
