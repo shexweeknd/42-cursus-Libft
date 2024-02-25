@@ -6,13 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 16:40:11 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:34:50 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_word_count(const char *s, unsigned char c)
+static size_t	ft_word_count(const char *s, unsigned char c)
 {
 	size_t	count;
 
@@ -36,7 +36,6 @@ size_t	ft_word_count(const char *s, unsigned char c)
 	return (count);
 }
 
-// Memory allocation
 static char	*ft_firstword(char *str, char c)
 {
 	char	*word;

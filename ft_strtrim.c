@@ -6,13 +6,13 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:25 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 18:29:39 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:35:36 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_isset(const char c, const char *set)
+static size_t	ft_isset(const char c, const char *set)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ size_t	ft_isset(const char c, const char *set)
 	return (0);
 }
 
-size_t	ft_getstart(const char *str, const char *set)
+static size_t	ft_getstart(const char *str, const char *set)
 {
 	size_t	str_size;
 	size_t	start_index;
@@ -40,7 +40,7 @@ size_t	ft_getstart(const char *str, const char *set)
 	return (start_index);
 }
 
-size_t	ft_getend(const char *str, const char *set)
+static size_t	ft_getend(const char *str, const char *set)
 {
 	size_t	str_size;
 
@@ -51,7 +51,8 @@ size_t	ft_getend(const char *str, const char *set)
 	return (str_size);
 }
 
-char	*create_trimmed(const char *str, size_t start_index, size_t end_index)
+static char	*create_trimmed(const char *str, size_t start_index,
+		size_t end_index)
 {
 	char	*buffer;
 	size_t	size;
