@@ -6,91 +6,89 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/24 14:24:29 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:22:59 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static size_t	ft_word_count(const char *s, unsigned char c)
 {
 	size_t	count;
-	size_t	i;
+	int		i;
 
 	count = 0;
 	i = 0;
-	while (*(s + i))
+	while (s[i])
 	{
-		if (*(s + i) != c)
-		{
+		if (s[i] == c && s[i + 1] != c)
 			count++;
-			while (*(s + i) && *(s + i) != c)
-				i++;
-		}
-		else if (*(s + i) == c)
-			i++;
-	}
-	return (count);
-}
-
-static size_t	get_word_len(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(s + i) && *(s + i) != c)
 		i++;
-	return (i);
-}
-
-static void	free_array(size_t i, char **array)
-{
-	while (i > 0)
-	{
-		i--;
-		free(*(array + i));
 	}
-	free(array);
+	return (count + 1);
 }
 
-static char	**split(char const *s, char c, char **array, size_t words_count)
+static char	*ft_firstword(char *str, char c)
 {
-	size_t	i;
-	size_t	j;
+	char	*word;
+	int		first_word_len;
+	int		i;
 
+	first_word_len = 0;
+	while (str[first_word_len] != c && str[first_word_len] != '\0')
+		first_word_len++;
+	word = (char *)malloc(sizeof(char) * first_word_len);
+	if (!word)
+		return (0);
 	i = 0;
-	j = 0;
-	while (i < words_count)
+	while (*str != c && *str != '\0')
 	{
-		while (*(s + j) && *(s + j) == c)
-			j++;
-		*(array + i) = ft_substr(s, j, get_word_len(&*(s + j), c));
-		if (!*(array + i))
+		if (*str != c)
+			word[i++] = *str;
+		str++;
+	}
+	word[first_word_len] = '\0';
+	return (word);
+}
+
+static char	*ft_decalage(char *trimmed_str, char c)
+{
+	while (*trimmed_str != '\0')
+	{
+		if (*trimmed_str == c && *(trimmed_str + 1) != c)
 		{
-			free_array(i, array);
-			return (NULL);
+			trimmed_str++;
+			break ;
 		}
-		while (*(s + j) && *(s + j) != c)
-			j++;
-		i++;
+		trimmed_str++;
 	}
-	*(array + i) = NULL;
-	return (array);
+	return (trimmed_str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
-	size_t	words;
+	char	**buffer2d;
+	char	*trimmed_str;
+	char	tmp[1];
+	size_t	word_count;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
-	words = count_words(s, c);
-	array = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!array)
+	tmp[0] = c;
+	trimmed_str = ft_strtrim(s, tmp);
+	word_count = ft_word_count(trimmed_str, c);
+	buffer2d = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!buffer2d)
 		return (NULL);
-	array = split(s, c, array, words);
-	return (array);
+	buffer2d[word_count] = NULL;
+	i = 0;
+	while (i < word_count)
+	{
+		buffer2d[i++] = ft_firstword(trimmed_str, c);
+		trimmed_str = ft_decalage(trimmed_str, c);
+	}
+	return (buffer2d);
 }
 
 /*

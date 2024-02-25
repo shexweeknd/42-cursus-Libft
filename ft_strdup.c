@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:13:23 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:12:51 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:24:31 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
 {
 	char *str = "";
 	char *ret;
-	
+
 	ret = ft_strdup(str);
 	printf("Le resultat : %d\n", ret[0]);
 	free(ret);
