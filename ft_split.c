@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 11:51:07 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 12:18:21 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_word_count(const char *s, unsigned char c)
 	size_t	count;
 
 	count = 0;
+	if (!s)
+		return (0);
 	while (*s == c)
 		s++;
 	while (*s)
@@ -24,12 +26,14 @@ size_t	ft_word_count(const char *s, unsigned char c)
 		if (*s != c)
 		{
 			count++;
-			while (*s != c && *s != '\0')
+			while (*s != c && *s)
 				s++;
-			if (!*s)
-				return (count);
 		}
-		s++;
+		else
+		{
+			while (*s && *s == c)
+				s++;
+		}
 	}
 	return (count);
 }
