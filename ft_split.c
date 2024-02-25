@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 13:29:36 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:35:11 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*ft_firstword(char *str, char c)
 		first_word_len++;
 	word = (char *)malloc(sizeof(char) * (first_word_len + 1));
 	if (!word)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (*str != c && *str != '\0')
 	{
