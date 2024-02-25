@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:47 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/25 16:24:40 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:33:52 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	int		position;
 
+	if (!*s)
+		return (NULL);
 	word_count = ft_word_count(s, c);
 	buffer2d = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!buffer2d)
