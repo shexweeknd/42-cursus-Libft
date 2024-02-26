@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/26 13:49:27 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:51:56 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ static char	*ft_malloc(size_t size, int sign)
 	char	*buffer;
 
 	if (sign)
+	{
 		buffer = (char *)malloc(sizeof(char) * (size + 2));
+		if (!buffer)
+			return (NULL);
+	}
 	else if (!sign)
+	{
 		buffer = (char *)malloc(sizeof(char) * (size + 1));
-	if (!buffer)
-		return (NULL);
+		if (!buffer)
+			return (NULL);
+	}
 	return (buffer);
 }
 
