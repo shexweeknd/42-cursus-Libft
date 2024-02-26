@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/26 13:51:56 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:59:23 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,11 @@ static char	*ft_malloc(size_t size, int sign)
 	char	*buffer;
 
 	if (sign)
-	{
 		buffer = (char *)malloc(sizeof(char) * (size + 2));
-		if (!buffer)
-			return (NULL);
-	}
 	else if (!sign)
-	{
 		buffer = (char *)malloc(sizeof(char) * (size + 1));
-		if (!buffer)
-			return (NULL);
-	}
+	if (!buffer)
+		return (NULL);
 	return (buffer);
 }
 
@@ -81,7 +75,7 @@ char	*ft_itoa(int n)
 	// allouer la taille de n + 1 a buffer;
 	buffer = ft_malloc(size, sign);
 	// remplir buffer;
-	if (sign)
+	if (sign && buffer)
 	{
 		buffer[0] = '-';
 		ft_fill_buffer(buffer + 1, size, (unsigned long)tmp);
