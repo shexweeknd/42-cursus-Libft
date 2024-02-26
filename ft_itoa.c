@@ -6,73 +6,84 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 16:18:46 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:49:27 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nbr_len(int nbr)
+static size_t	ft_get_size(unsigned long nbr)
 {
-	int	len;
+	size_t	res;
 
-	len = 0;
-	if (nbr < 1)
-		len++;
-	while (nbr)
+	res = 1;
+	while (nbr >= 10)
 	{
 		nbr /= 10;
-		len++;
+		res++;
 	}
-	return (len);
+	return (res);
 }
 
-static long long	abs_val(long long n)
+static long	ft_absolute(int nbr)
 {
-	long long	nb;
-
-	nb = 1;
-	if (n < 0)
-		nb *= -n;
-	else
-		nb *= n;
-	return (nb);
+	if (nbr == -2147483648)
+		return (2147483648);
+	if (nbr < 0)
+		nbr *= -1;
+	return (nbr);
 }
 
-static char	*str_new(size_t n)
+static char	*ft_malloc(size_t size, int sign)
 {
-	char	*str;
+	char	*buffer;
 
-	str = (char *)malloc(sizeof(char) * (n + 1));
-	if (!str)
+	if (sign)
+		buffer = (char *)malloc(sizeof(char) * (size + 2));
+	else if (!sign)
+		buffer = (char *)malloc(sizeof(char) * (size + 1));
+	if (!buffer)
 		return (NULL);
-	return (str);
+	return (buffer);
+}
+
+static void	ft_fill_buffer(char *buffer, size_t size, unsigned long nbr)
+{
+	buffer[size] = '\0';
+	while (size)
+	{
+		buffer[--size] = 48 + nbr % 10;
+		nbr /= 10;
+	}
+	return ;
 }
 
 char	*ft_itoa(int n)
 {
-	unsigned int	nbr;
-	int				sign;
-	int				len;
-	char			*str;
+	char	*buffer;
+	size_t	size;
+	int		sign;
+	long	tmp;
 
+	// verifier si le signe est positif puis assigner
 	sign = 0;
 	if (n < 0)
 		sign = 1;
-	len = nbr_len(n);
-	str = str_new(len);
-	if (!str)
-		return (NULL);
-	*(str + len) = '\0';
-	nbr = abs_val(n);
-	while (len--)
-	{
-		*(str + len) = 48 + nbr % 10;
-		nbr /= 10;
-	}
+	tmp = ft_absolute(n);
+	// compter la taille de n;
+	size = ft_get_size((long)tmp);
+	// allouer la taille de n + 1 a buffer;
+	buffer = ft_malloc(size, sign);
+	// remplir buffer;
 	if (sign)
-		*(str) = 45;
-	return (str);
+	{
+		buffer[0] = '-';
+		ft_fill_buffer(buffer + 1, size, (unsigned long)tmp);
+	}
+	else
+		ft_fill_buffer(buffer, size, (unsigned long)tmp);
+	// return ;
+	return (buffer);
 }
 
 /*
