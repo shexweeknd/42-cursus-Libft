@@ -49,7 +49,7 @@ BONUS = ft_lstnew_bonus.c \
 
 OBJ = $(SRC:.c=.o)
 
-BONUSOBJ = $(OBJ) $(BONUS:.c=.o)
+ALLOBJS = $(OBJ) $(BONUS:.c=.o)
 
 MAINSRC = main.c
 
@@ -58,7 +58,7 @@ MAINOBJ = $(MAINSRC:.c=.o)
 all: $(NAME)
 
 .c.o:
-	cc -c $(FLAGS) $(SRC) $(BONUS) -I .
+	@cc -c $(FLAGS) $(SRC) $(BONUS) -I .
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
@@ -67,12 +67,12 @@ $(NAME): $(OBJ)
 debug: $(SRC) $(MAINSRC)
 	@(gcc -g $(SRC) $(MAINSRC) $(FLAGS) && ./a.out)
 
-bonus: $(BONUSOBJ)
-	@ar rc $(NAME) $(BONUSOBJ)
+bonus: $(ALLOBJS)
+	@ar rc $(NAME) $(ALLOBJS)
 	@ranlib $(NAME)
 
 clean:
-	@rm -f $(OBJ) $(BONUSOBJ) *.out
+	@rm -f $(OBJ) $(ALLOBJS) *.out
 
 fclean: clean
 	@rm -f $(NAME)
