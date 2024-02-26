@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 09:45:44 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:11:49 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:32:38 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ void	*ft_calloc(size_t n, size_t size)
 	long	total;
 
 	total = n * size;
+	if (total < 0)
+		return (0);
 	ret = (void *)malloc(total);
 	if (!ret)
-		return (0);
-	ft_bzero(ret, total);
-	if (!ret || total < -2147483648 || total > 2147483647)
-		return (0);
-	return (ret);
+		return (NULL);
+	if (ret || total >= -2147483648 || total <= 2147483647)
+	{
+		ft_bzero(ret, total);
+		return (ret);
+	}
+	return (0);
 }
 
 /*
