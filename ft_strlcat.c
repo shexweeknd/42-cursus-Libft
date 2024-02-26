@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:57:02 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/26 14:15:10 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:29:02 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
 	unsigned int	j;
-	unsigned int	dlen;
-	unsigned int	slen;
+	unsigned int	d_len;
+	unsigned int	s_len;
 
 	d_len = ft_strlen(dest);
 	s_len = ft_strlen(src);
@@ -34,5 +34,5 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[j] = '\0';
 	if (size <= d_len)
 		return (s_len + size);
-	return (d_len + slen);
+	return (d_len + s_len);
 }
