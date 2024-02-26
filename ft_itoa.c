@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/26 14:02:24 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:06:12 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_fill_buffer(char *buffer, size_t size, unsigned long nbr)
 	buffer[size] = '\0';
 	while (size)
 	{
-		buffer[--size] = 48 + nbr % 10;
+		buffer[--size] = nbr % 10 + 48;
 		nbr /= 10;
 	}
 	return ;

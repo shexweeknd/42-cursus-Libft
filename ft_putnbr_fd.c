@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:04:14 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:22:23 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:09:47 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_putnbr_fd(int nb, int fd)
 	if (n >= 10)
 	{
 		ft_putnbr_fd(n / 10, fd);
-		n = n % 10;
+		n %= 10;
 	}
 	ft_putchar_fd(n + '0', fd);
 }

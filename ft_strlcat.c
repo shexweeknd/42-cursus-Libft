@@ -6,21 +6,11 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:57:02 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/23 14:17:02 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:15:10 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static unsigned int	ft_cnt(const char *str)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 {
@@ -29,12 +19,12 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 	unsigned int	dlen;
 	unsigned int	slen;
 
-	dlen = ft_cnt(dest);
-	slen = ft_cnt(src);
+	d_len = ft_strlen(dest);
+	s_len = ft_strlen(src);
 	i = 0;
-	j = dlen;
+	j = d_len;
 	if (size == 0)
-		return (slen);
+		return (s_len);
 	while (src[i] && (j < size - 1))
 	{
 		dest[j] = src[i];
@@ -42,7 +32,7 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 		j++;
 	}
 	dest[j] = '\0';
-	if (size <= dlen)
-		return (slen + size);
-	return (dlen + slen);
+	if (size <= d_len)
+		return (s_len + size);
+	return (d_len + slen);
 }
