@@ -6,7 +6,7 @@
 /*   By: hramaros <hramaros@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:17:54 by hramaros          #+#    #+#             */
-/*   Updated: 2024/02/26 14:01:10 by hramaros         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:02:24 by hramaros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,14 @@ char	*ft_itoa(int n)
 	int		sign;
 	long	tmp;
 
-	// verifier si le signe est positif puis assigner
 	sign = 0;
 	if (n < 0)
 		sign = 1;
 	tmp = ft_absolute(n);
-	// compter la taille de n;
 	size = ft_get_size((long)tmp);
-	// allouer la taille de n + 1 a buffer;
 	buffer = ft_malloc(size, sign);
 	if (!buffer)
 		return (NULL);
-	// remplir buffer;
 	if (sign)
 	{
 		buffer[0] = '-';
