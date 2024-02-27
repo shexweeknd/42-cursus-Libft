@@ -72,7 +72,7 @@ bonus: $(ALLOBJS)
 	@ranlib $(NAME)
 
 clean:
-	@rm -f $(OBJ) $(ALLOBJS) *.out
+	@rm -f $(OBJ) $(ALLOBJS) *.out main.o
 
 fclean: clean
 	@rm -f $(NAME)
